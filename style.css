@@ -1,0 +1,91 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.button {
+    display: inline-block;
+    background-color: #b8860b; /* Dorado oscuro */
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #daa520; /* Dorado más claro */
+}
+
+.button-secondary {
+    display: inline-block;
+    background-color: transparent;
+    color: #b8860b;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    border: 1px solid #b8860b;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button-secondary:hover {
+    background-color: #b8860b;
+    color: white;
+}
+
+/* Header */
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo img {
+    height: 50px; /* Ajusta el tamaño según tu logo */
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+header nav ul li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #b8860b;
+}
+
+/* Hero Section */
+.hero {
+    background-image: url('img/hero-image.jpg'); /* Reemplaza con tu imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    color: B8860B;
+    text-align: center;
