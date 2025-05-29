@@ -1,11 +1,14 @@
-/* Estilos generales */
+/* Estilos generales y reajustes para Figma */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Arial', sans-serif; /* Usaremos Arial como base */
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #f4f4f4; /* Fondo claro para el cuerpo */
     color: #333;
     line-height: 1.6;
+    display: flex; /* Para el footer fijo en la parte inferior */
+    flex-direction: column; /* Para el footer fijo en la parte inferior */
+    min-height: 100vh; /* Para el footer fijo en la parte inferior */
 }
 
 .container {
@@ -14,31 +17,51 @@ body {
     padding: 20px;
 }
 
+main {
+    flex: 1; /* Esto empuja el footer hacia abajo */
+}
+
+/* Botones reusables (ajustados para ser más prominentes) */
 .button {
-    display: inline-block;
-    background-color: #b8860b; /* Dorado oscuro */
+    display: inline-flex; /* Usar flex para centrar texto e iconos */
+    align-items: center;
+    justify-content: center;
+    background-color: #b8860b; /* Dorado oscuro, como en el mockup */
     color: white;
-    padding: 10px 20px;
+    padding: 12px 25px; /* Más padding para un botón más grande */
     text-decoration: none;
-    border-radius: 5px;
+    border: none;
+    border-radius: 5px; /* Bordes ligeramente redondeados */
     margin-top: 20px;
-    transition: background-color 0.3s ease;
+    cursor: pointer;
+    font-weight: bold; /* Texto más grueso */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase; /* Texto en mayúsculas */
+    letter-spacing: 0.5px;
+    font-size: 1em; /* Asegura un tamaño de fuente consistente */
 }
 
 .button:hover {
-    background-color: #daa520; /* Dorado más claro */
+    background-color: #daa520; /* Dorado más claro al pasar el mouse */
+    transform: translateY(-2px); /* Pequeño efecto 3D */
 }
 
 .button-secondary {
-    display: inline-block;
+    display: inline-flex; /* Usar flex para centrar texto e iconos */
+    align-items: center;
+    justify-content: center;
     background-color: transparent;
-    color: #b8860b;
-    padding: 10px 20px;
+    color: #b8860b; /* Texto dorado */
+    padding: 12px 25px;
     text-decoration: none;
     border-radius: 5px;
     margin-top: 10px;
-    border: 1px solid #b8860b;
+    border: 1px solid #b8860b; /* Borde dorado */
+    font-weight: bold;
     transition: background-color 0.3s ease, color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 1em; /* Asegura un tamaño de fuente consistente */
 }
 
 .button-secondary:hover {
@@ -46,21 +69,25 @@ body {
     color: white;
 }
 
-/* Header */
+/* Header (ajustes para la estética del mockup) */
 header {
-    background-color: #333;
+    background-color: #222; /* Un negro más suave que el 333 */
     color: white;
-    padding: 10px 0;
+    padding: 15px 0; /* Más padding vertical */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+    position: sticky; /* Sticky header para que se quede arriba al hacer scroll */
+    top: 0;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
 }
 
-header .container {
+.header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 header .logo img {
-    height: 50px; /* Ajusta el tamaño según tu logo */
+    height: 60px; /* Logo un poco más grande */
 }
 
 header nav ul {
@@ -74,18 +101,633 @@ header nav ul li a {
     display: block;
     color: white;
     text-decoration: none;
-    padding: 10px 15px;
-    transition: color 0.3s ease;
+    padding: 10px 20px; /* Más espacio en los enlaces */
+    transition: color 0.3s ease, background-color 0.3s ease;
+    font-weight: 500; /* Ligeramente más grueso */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 header nav ul li a:hover {
-    color: #b8860b;
+    color: #b8860b; /* Dorado al pasar el mouse */
+    background-color: rgba(255, 255, 255, 0.05); /* Sutil fondo al pasar el mouse */
 }
 
-/* Hero Section */
+/* Estilo para la navegación activa (reajustado) */
+header nav ul li a.active {
+    color: #daa520; /* Dorado para la página activa */
+    font-weight: bold;
+    border-bottom: 3px solid #daa520; /* Línea inferior más gruesa */
+    padding-bottom: 7px; /* Ajuste para la línea */
+}
+
+
+/* Hero Section (ajustes de imagen, texto y botón) */
 .hero {
-    background-image: url('img/hero-image.jpg'); /* Reemplaza con tu imagen de fondo */
-    background-size: cover;
+    background-image: url('img/hero-image.png'); /* Asegúrate de que esta línea esté presente y la ruta sea correcta */
+    background-size: contain; /* ¡Esta línea es crucial! */
     background-position: center;
-    color: B8860B;
+    background-repeat: no-repeat;
+    height: 60vh; /* Ajusta la altura según necesites */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
     text-align: center;
+    position: relative; /* Necesario para el ::before */
+    /* Otros estilos */
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Capa oscura para mejorar la legibilidad del texto */
+}
+
+.hero-content {
+    position: relative; /* Para que el contenido esté encima de la capa oscura */
+    z-index: 1;
+    /* Otros estilos para el contenido */
+}
+
+/* Destacados Section (ajuste de carousel items) */
+.destacados {
+    padding: 60px 0; /* Más padding */
+    text-align: center;
+    background-color: #fcfcfc; /* Fondo blanco casi puro */
+}
+
+.destacados h2 {
+    font-size: 2.5em; /* Título más grande */
+    margin-bottom: 40px;
+    color: #b8860b; /* Dorado para el título */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 20px;
+    gap: 30px; /* Más espacio entre los ítems */
+    scrollbar-width: thin;
+    scrollbar-color: #b8860b #e0e0e0;
+}
+
+.carousel::-webkit-scrollbar {
+    height: 8px;
+}
+
+.carousel::-webkit-scrollbar-track {
+    background: #e0e0e0;
+    border-radius: 10px;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+    background-color: #b8860b;
+    border-radius: 10px;
+    border: 2px solid #e0e0e0;
+}
+
+.carousel-item {
+    background-color: white; /* Fondo blanco para las tarjetas */
+    border: 1px solid #ddd; /* Borde más suave */
+    padding: 30px; /* Más padding interno */
+    border-radius: 10px; /* Bordes más redondeados */
+    min-width: 350px; /* Ancho mínimo para cada tarjeta */
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-text {
+    font-size: 1.25em; /* Texto más grande */
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.carousel-subtext {
+    color: #666; /* Color de texto ligeramente más oscuro */
+    font-size: 1em;
+}
+
+/* Servicios Resumen Section (ajustes de tarjetas) */
+.servicios-resumen {
+    padding: 80px 0; /* Más padding */
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.servicios-resumen h2 {
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    color: #b8860b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px; /* Más espacio entre las tarjetas */
+    padding: 20px;
+}
+
+.servicio-card {
+    background-color: white;
+    padding: 40px; /* Más padding interno */
+    border-radius: 10px; /* Bordes más redondeados */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.servicio-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.18);
+}
+
+.servicio-card img {
+    max-width: 90px; /* Íconos ligeramente más grandes */
+    height: auto;
+    margin-bottom: 25px;
+}
+
+.servicio-card h3 {
+    color: #b8860b;
+    margin-bottom: 15px;
+    font-size: 1.8em; /* Título de tarjeta más grande */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.servicio-card p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* Footer (ajustes de color y espaciado) */
+footer {
+    background-color: #222; /* Fondo oscuro consistente con el header */
+    color: white;
+    text-align: center;
+    padding: 25px 0; /* Más padding vertical */
+    font-size: 0.95em;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Sombra hacia arriba */
+    width: 100%; /* Asegura que ocupe todo el ancho */
+}
+
+footer .social-links {
+    margin-top: 20px;
+}
+
+footer .social-links a {
+    display: inline-block;
+    margin: 0 12px; /* Más espacio entre iconos */
+}
+
+footer .social-links img {
+    height: 35px; /* Iconos un poco más grandes */
+    opacity: 0.85;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+footer .social-links img:hover {
+    opacity: 1;
+    transform: scale(1.1); /* Pequeño efecto al pasar el mouse */
+}
+
+/* Estilos específicos para formularios (agendar.html, consultar.html) */
+.form-section {
+    padding: 60px 0;
+    background-color: #fcfcfc; /* Fondo claro para las secciones de formulario */
+    text-align: center;
+}
+
+.form-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 25px;
+    color: #b8860b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.form-intro {
+    font-size: 1.15em;
+    color: #555;
+    margin-bottom: 50px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.appointment-form {
+    max-width: 650px; /* Formulario un poco más ancho */
+    margin: 0 auto;
+    padding: 40px; /* Más padding interno */
+    background-color: white;
+    border-radius: 10px; /* Bordes más redondeados */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Sombra más definida */
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 25px; /* Más espacio entre grupos */
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 1.05em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="email"] {
+    width: calc(100% - 28px); /* Ajuste por padding y borde */
+    padding: 12px;
+    border: 3px solid #b8860b; /* Borde más grueso y dorado como en mockup */
+    border-radius: 8px; /* Bordes más redondeados para los inputs */
+    font-size: 1.05em;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group input[type="email"]:focus {
+    border-color: #daa520; /* Dorado más claro al enfocar */
+    outline: none; /* Elimina el contorno azul por defecto */
+}
+
+.form-group input[type="text"]::placeholder,
+.form-group input[type="tel"]::placeholder,
+.form-group input[type="email"]::placeholder {
+    color: #999; /* Placeholder más claro */
+}
+
+.form-actions {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.form-actions .button,
+.form-actions .button-secondary {
+    margin: 15px; /* Más espacio entre los botones */
+}
+
+/* Estilos para la sección de Servicios completa */
+.servicios-completo {
+    padding: 80px 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+.servicios-completo .section-intro {
+    font-size: 1.15em;
+    color: #555;
+    margin-bottom: 50px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.servicio-categoria {
+    margin-bottom: 80px; /* Más espacio entre categorías */
+}
+
+.servicio-categoria h3 {
+    font-size: 2.2em;
+    color: #b8860b;
+    margin-bottom: 40px;
+    border-bottom: 2px solid #eee; /* Línea más gruesa */
+    padding-bottom: 20px;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.servicio-items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); /* Ajustado para que quepan bien */
+    gap: 35px; /* Espacio entre items de servicio */
+    padding: 20px 0;
+}
+
+.servicio-item {
+    background-color: #fcfcfc;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+    text-align: center; /* Centrar todo el contenido de la tarjeta */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Espacio entre los elementos */
+}
+
+.servicio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.servicio-item img {
+    max-width: 100%;
+    height: 200px; /* Altura un poco mayor para las imágenes de servicio */
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.servicio-item h4 {
+    font-size: 1.4em;
+    color: #333;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.servicio-item p {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.servicio-item .precio {
+    font-weight: bold;
+    color: #b8860b;
+    font-size: 1.2em;
+    margin-top: auto;
+}
+
+
+/* Estilos para la sección de Contacto */
+.contact-section {
+    padding: 80px 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 25px;
+    color: #b8860b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.contact-section .section-intro {
+    font-size: 1.15em;
+    color: #555;
+    margin-bottom: 50px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 35px;
+    margin-bottom: 60px;
+}
+
+.contact-card {
+    background-color: white;
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.contact-card h3 {
+    color: #333; /* Títulos de tarjeta en negro */
+    font-size: 1.6em;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.contact-card p {
+    color: #555;
+    margin-bottom: 8px;
+    font-size: 1em;
+}
+
+.contact-card p a {
+    color: #b8860b;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-card p a:hover {
+    text-decoration: underline;
+}
+
+.map-container {
+    margin-top: 40px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.map-container h3 {
+    color: #b8860b;
+    font-size: 2em;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.map-container iframe {
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Utilitarios */
+.text-center {
+    text-align: center;
+}
+
+/* ------------------------------------------- */
+/* NUEVOS ESTILOS PARA LA NAVEGACIÓN INFERIOR (MÓVIL) */
+/* ------------------------------------------- */
+.bottom-nav {
+    display: none; /* Oculto por defecto en desktop */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #222; /* Fondo oscuro, similar al header */
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    padding: 5px 0;
+}
+
+.bottom-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 60px; /* Altura fija para la barra */
+}
+
+.bottom-nav ul li a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 0.75em; /* Tamaño de texto pequeño */
+    font-weight: bold;
+    padding: 5px;
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+}
+
+.bottom-nav ul li a i { /* Estilo para los iconos de Font Awesome */
+    font-size: 1.5em; /* Tamaño de icono */
+    margin-bottom: 5px; /* Espacio entre icono y texto */
+}
+
+.bottom-nav ul li a:hover {
+    color: #daa520; /* Dorado al pasar el mouse */
+}
+
+.bottom-nav ul li a.active {
+    color: #daa520; /* Dorado para el activo */
+}
+
+
+/* Media Queries para Responsive Design (asegúrate de que estas estén al final del archivo CSS) */
+@media (max-width: 992px) { /* Tabletas grandes */
+    .hero h1 {
+        font-size: 3em;
+    }
+    .hero p {
+        font-size: 1.3em;
+    }
+    .carousel-item {
+        min-width: 300px;
+    }
+    .servicios-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 768px) { /* Tabletas y móviles */
+    header nav {
+        display: none; /* Oculta la navegación superior en pantallas pequeñas */
+    }
+
+    .bottom-nav {
+        display: block; /* Muestra la navegación inferior en pantallas pequeñas */
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    header .header-container {
+        flex-direction: row; /* Mantener logo y tal vez un menú hamburguesa */
+        justify-content: center; /* Centra el logo si no hay menú */
+        align-items: center;
+        text-align: center;
+    }
+    header .logo {
+        width: 100%; /* El logo ocupa todo el ancho */
+        text-align: center;
+    }
+
+
+    .hero {
+        padding: 80px 15px;
+        min-height: 400px;
+    }
+
+    .hero h1 {
+        font-size: 2.5em;
+    }
+
+    .hero p {
+        font-size: 1.1em;
+    }
+
+    .destacados h2,
+    .servicios-resumen h2,
+    .form-section h2,
+    .servicios-completo h2,
+    .contact-section h2 {
+        font-size: 2em;
+    }
+
+    .carousel {
+        padding: 10px;
+        gap: 15px;
+    }
+
+    .carousel-item {
+        min-width: 280px;
+        padding: 20px;
+    }
+
+    .servicios-grid,
+    .servicio-items-grid,
+    .contact-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .servicio-card, .servicio-item, .contact-card {
+        padding: 30px;
+    }
+
+    .appointment-form {
+        padding: 25px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="tel"],
+    .form-group input[type="email"] {
+        width: calc(100% - 28px);
+    }
+}
+
+@media (max-width: 480px) { /* Móviles pequeños */
+    .hero h1 {
+        font-size: 2em;
+    }
+    .hero p {
+        font-size: 0.95em;
+    }
+    .button, .button-secondary {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+}
